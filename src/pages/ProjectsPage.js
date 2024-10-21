@@ -1,5 +1,6 @@
 import React from "react";
 import { FaSpinner } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { useProjects } from "../hooks/useProjects";
 
 const ProjectsPage = () => {
@@ -24,9 +25,9 @@ const ProjectsPage = () => {
               <p className="text-gray-600 mb-4">{project.description}</p>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-500">By {project.author}</span>
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                <Link to={project.link} className="text-blue-500 hover:underline">
                   View Project
-                </a>
+                </Link>
               </div>
             </div>
           </div>

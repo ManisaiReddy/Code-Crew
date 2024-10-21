@@ -1,41 +1,61 @@
 import { useEffect, useState } from "react";
 
-// Dummy project data
-const dummyProjects = [
+const projectData = [
   {
     id: 1,
-    title: "Task Management App",
-    description: "A React-based task management application with drag-and-drop functionality.",
-    author: "Jane Doe",
-    link: "https://github.com/janedoe/task-management-app"
+    title: "Node.js RESTful API",
+    description: "A simple and scalable Node.js RESTful API with MongoDB integration.",
+    author: "Adnan Rahić",
+    link: "/projects/nodejs-restful-api",
+    repoLink: "https://github.com/adnanrahic/nodejs-restful-api"
   },
   {
     id: 2,
-    title: "Weather Forecast Dashboard",
-    description: "A dashboard that displays weather forecasts using data from a public API.",
-    author: "John Smith",
-    link: "https://github.com/johnsmith/weather-dashboard"
+    title: "Python Machine Learning",
+    description: "Comprehensive Python code for machine learning and data science techniques.",
+    author: "Sebastian Raschka",
+    link: "/projects/python-machine-learning",
+    repoLink: "https://github.com/rasbt/python-machine-learning-book-3rd-edition"
   },
   {
     id: 3,
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce platform built with MERN stack.",
-    author: "Alice Johnson",
-    link: "https://github.com/alicejohnson/ecommerce-platform"
+    title: "PyOD: Python Outlier Detection",
+    description: "A comprehensive and scalable Python toolkit for detecting outliers in multivariate data.",
+    author: "Yue Zhao",
+    link: "/projects/pyod",
+    repoLink: "https://github.com/yzhao062/pyod"
   },
   {
     id: 4,
-    title: "Fitness Tracker",
-    description: "A mobile app for tracking workouts and nutrition using React Native.",
-    author: "Bob Wilson",
-    link: "https://github.com/bobwilson/fitness-tracker"
+    title: "Java Design Patterns",
+    description: "Implementation of various design patterns in Java with real-world examples.",
+    author: "Ilkka Seppälä",
+    link: "/projects/java-design-patterns",
+    repoLink: "https://github.com/iluwatar/java-design-patterns"
   },
   {
     id: 5,
-    title: "Social Media Analytics Tool",
-    description: "A tool for analyzing social media engagement and trends.",
-    author: "Emma Brown",
-    link: "https://github.com/emmabrown/social-media-analytics"
+    title: "Spring PetClinic",
+    description: "Sample application demonstrating the use of Spring Boot with Java.",
+    author: "Spring Team",
+    link: "/projects/spring-petclinic",
+    repoLink: "https://github.com/spring-projects/spring-petclinic"
+  },
+  {
+    id: 6,
+    title: "Heart Disease Detection",
+    description: "Machine learning project for predicting heart disease using various algorithms.",
+    author: "Mr. Khan",
+    link: "/projects/heart-disease-detection",
+    repoLink: "https://github.com/MrKhan0747/Heart-Disease-Detection"
+  },
+  {
+    id: 7,
+    title: "CatBoost",
+    description: "A fast, scalable, high performance gradient boosting on decision trees library.",
+    author: "CatBoost Team",
+    link: "/projects/catboost",
+    repoLink: "https://github.com/catboost/catboost"
   }
 ];
 
@@ -49,7 +69,7 @@ export const useProjects = () => {
       try {
         // Simulate API call delay
         await new Promise(resolve => setTimeout(resolve, 1000));
-        setProjects(dummyProjects);
+        setProjects(projectData);
         setLoading(false);
       } catch (err) {
         setError(new Error('Failed to fetch projects'));
