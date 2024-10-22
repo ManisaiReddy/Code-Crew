@@ -1,6 +1,7 @@
 import PostCard from "../components/post/PostCard";
 import React, { useEffect, useState } from "react";
 import SearchBar from "../components/common/SearchBar";
+import UserProfileWidget from "../components/UserProfileWidget";
 import { FaSpinner } from "react-icons/fa";
 import { commentOnPost, fetchPosts, likePost } from "../services/api";
 
@@ -60,7 +61,11 @@ const HomePage = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-      <SearchBar onSearch={setSearchQuery} />
+       <div className="flex justify-between items-center mb-6">
+       <SearchBar onSearch={setSearchQuery} />
+      <UserProfileWidget />
+      
+    </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
         {filteredPosts.map(post => (
           <PostCard 
