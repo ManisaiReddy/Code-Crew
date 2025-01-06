@@ -63,6 +63,10 @@ export const useProjects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [newProject, setNewProject] = useState({ title: '', description: '', author: '' });
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [toggleOptions, setToggleOptions] = useState(false);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -79,6 +83,43 @@ export const useProjects = () => {
 
     fetchProjects();
   }, []);
+  const handleToggleClick = () => {
+    setToggleOptions(!toggleOptions);
+  };
 
-  return { projects, loading, error };
+  const handleProjectClick = () => {
+    setShowModal(true);
+  };
+
+  const handleFileDrop = (files) => {
+    const fileArray = Array.from(files);
+    setUploadedFiles(prevFiles => [...prevFiles, ...fileArray]);
+  };
+
+  const handleDownload = (project) => {
+    // Logic to download project (e.g., create a link and trigger download)
+    console.log(`Downloading project: ${project.title}`);
+  };
+
+  const handleSubmitProject = (e) => {
+    e.preventDefault();
+    // Logic to add the new project to the projects state
+    const newProjectData = { ...newProject, id: projects.length + 1 };
+    setProjects(prevProjects => [...prevProjects, newProjectData]);
+    setNewProject({ title: '', description: '', author: '' });
+    setShowModal(false);
+  };
+
+  return { projects, loading, error,showModal,
+    setShowModal,
+    newProject,
+    setNewProject,
+    uploadedFiles,
+    handleFileDrop,
+    handleDownload,
+    handleSubmitProject,
+    toggleOptions,
+    handleToggleClick,
+    handleProjectClick,
+     };
 };
